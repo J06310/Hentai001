@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lista de Videos Modal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .folder-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .folder {
+            cursor: pointer;
+            text-align: center;
+            margin: 10px;
+            width: calc(33.33% - 20px);
+            position: relative;
+            color: #FFFFFF;
+        }
+
+        .folder img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .folder:hover img {
+            transform: scale(1.05);
+        }
+
+        .modal, .inner-modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: #0, 0, 0, 0;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .modal-content img {
+            width: 50%;
+            display: block;
+            margin: 0 auto 15px;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #ffffff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+
+        .modal-info {
+            font-size: 15px;
+            color: #FFFFFF;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .modal-info h3 {
+            color: #ffcc00;
+            font-size: 22px;
+            white-space: nowrap;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .modal-info p {
+            margin: 8px 0;
+        }
+
+        .icono {
+            color: #FFFFFF;
+            margin-right: 8px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            color: #FFFFFF;
+            background-color: #FF0000;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+            display: inline-block;
+            white-space: nowrap;
+            width: auto;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #FF0000;
+        }
+
+        .video-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="folder-container">
+<!-- Hentai #1 -->
+<div class="folder" onclick="openModal('modalH1')">
+<img src="https://image.tmdb.org/t/p/original/nGcCuqoPs0G41tRVI8crOz53tfL.jpg" alt="UNA VENIDA DE ALTURA">
+</div>
+<!-- Hentai #2 -->
+<div class="folder" onclick="openModal('modalH2')">
+<img src="https://image.tmdb.org/t/p/original/pE2v7nbYcv6FTfRApYOFTo4INfC.jpg" alt="OVERFLOW">
+</div>
+<!-- Hentai #3 -->
+<div class="folder" onclick="openModal('modalH3')">
+<img src="https://image.tmdb.org/t/p/original/uTNcC9ArHn05XBcqb6qFfMheK2E.jpg" alt="EL SEÑOR LOBO QUIERE SER COMIDO">
+</div>
+<!-- Hentai #4 -->
+<div class="folder" onclick="openModal('modalH4')">
+<img src="https://image.tmdb.org/t/p/original/nYCjcpf2w5F652AEvYBDSo1KoDB.jpg" alt="MI GRAN JEFE">
+</div>
+<!-- Hentai #5 -->
+<div class="folder" onclick="openModal('modalH5')">
+<img src="https://image.tmdb.org/t/p/original/2AigEr60a7I6GMNBt434f9Hzg4U.jpg" alt="LOS ADULTOS NO SABEN AMAR">
+</div>
+<!-- Hentai #6 -->
+<div class="folder" onclick="openModal('modalH6')">
+<img src="https://image.tmdb.org/t/p/original/my7A6AGwBvJhtzPrHjLW1ykVbNG.jpg" alt="MI PROMETIDO ES UN ESTUDIANTE">
+</div>
+<!-- Hentai #7 -->
+<div class="folder" onclick="openModal('modalH7')">
+<img src="https://image.tmdb.org/t/p/original/5RoaXWgM7Zck23wIzcdL0MbArqb.jpg" alt="DEDOS TRAVIESOS">
+</div>
+<!-- Hentai #8 -->
+<div class="folder" onclick="openModal('modalH8')">
+<img src="https://image.tmdb.org/t/p/original/bs70WStsspaiclienWGeMBUDotQ.jpg" alt="MODAETE YO, ADAM-KUN">
+</div>
+<!-- Hentai #9 -->
+<div class="folder" onclick="openModal('modalH9')">
+<img src="https://image.tmdb.org/t/p/original/to5FshluwPdO9d3Ucs7fagJL7OU.jpg" alt="JIMIHEN!! JIMIKO WO KAE CHAU JUN ISEI KOUYUU">
+</div>
+<!-- Hentai #10 -->
+<div class="folder" onclick="openModal('modalHentai10')">
+<img src="https://image.tmdb.org/t/p/original/vCXLdYORw5iPqpjcE71KAEoCwbO.jpg" alt="KURO GYARU NI NATTA KARA SHINYUU TO YATTEE MITA">
+</div>
+<!-- Hentai #11 -->
+<div class="folder" onclick="openModal('modalNoMeGustaMiHermano')">
+    <img src="https://image.tmdb.org/t/p/original/94NSjNHU9fOfoUXSYG2nzKafYww.jpg" alt="Definitivamente. ¡No me gusta mi hermano para nada!">
+</div>
+<!-- Hentai #12 -->
+<div class="folder" onclick="openModal('modalUnaNocheArdiente')">
+    <img src="https://image.tmdb.org/t/p/original/yOa9M7e3M9P2sJBQzemLvV7cwBS.jpg" alt="Una noche ardiente con mi jefe en un hotel de cápsula">
+</div>
+</div>
+
+<!-- HENTAI "UNA VENIDA DE ALTURA" -->
+
+<!-- MODAL -->
+
+<div id="modalH1" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalH1')">×</span>
+        <img src="https://image.tmdb.org/t/p/original/nGcCuqoPs0G41tRVI8crOz53tfL.jpg" alt="">
+        <h3>UNA VENIDA DE ALTURA</h3>
+        <div class="modal-info">
+            <p><i class="fas fa-calendar-alt icono"></i><strong>Año:</strong> 2018</p>
+            <p><i class="fas fa-film icono"></i><strong>Género:</strong> Animación, Comedia</p>
+            <p><i class="fas fa-tv icono"></i><strong>Temporadas:</strong> 1</p>
+            <p><i class="fas fa-list icono"></i><strong>Episodios:</strong> 9</p>
+            <p><i class="fas fa-signal icono"></i><strong>Estado:</strong> Finalizada</p>
+            <p><i class="fas fa-info-circle icono"></i><strong>Sinopsis:</strong> Aikawa Sousuke es una trabajador de medio tiempo que vive en un apartamento deteriorado. Un día oye un crujido en el techo y, de repente, la residente del departamento que está sobre el suyo, Unyuu Sunao, cae por un agujero que aparece en el techo de su cama. Así comienza la cómica vida de Sousuke y Sunao de vivir juntos</p>
+            <div class="video-buttons">
+                <span class="button" onclick="openInnerModal('innerModalH#UVDAT1')">TEMPORADA 1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TEMPORADA 1 -->
+
+<div id="innerModalH#UVDAT1" class="inner-modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInnerModal('innerModalH#UVDAT1')">×</span>
+        <div class="video-buttons">
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lLzNrYWV5MmVoOGJ3NQ==" class="button" target="_blank">Episodio 1</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lL3prYXJqamd3bHd2Mg==" class="button" target="_blank">Episodio 2</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lL3AzZGp2eDg2cmd4ZA==" class="button" target="_blank">Episodio 3</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lL2FjN2luczV5MDlsNg==" class="button" target="_blank">Episodio 4</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lLzJuZGVqb2RrZmZhZQ==" class="button" target="_blank">Episodio 5</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lLzk5ZGtuYzFkcnk2MA==" class="button" target="_blank">Episodio 6</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lL2VvZW93M2RrbHllOA==" class="button" target="_blank">Episodio 7</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lL3FiMjFobHQ1djJpaw==" class="button" target="_blank">Episodio 8</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lLzlrMWQxdmRqZjYzaA==" class="button" target="_blank">Episodio 9</a>
+        </div>
+    </div>
+</div>
+
+<!-- HENTAI "OVERFLOW" -->
+
+<div id="modalH2" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalH2')">×</span>
+        <img src="https://image.tmdb.org/t/p/original/pE2v7nbYcv6FTfRApYOFTo4INfC.jpg" alt="Overflow">
+        <h3>OVERFLOW</h3>
+        <div class="modal-info">
+            <p><i class="fas fa-calendar-alt icono"></i><strong>Año:</strong> 2020</p>
+            <p><i class="fas fa-film icono"></i><strong>Género:</strong> Animación, Comedia</p>
+            <p><i class="fas fa-tv icono"></i><strong>Temporadas:</strong> 1</p>
+            <p><i class="fas fa-list icono"></i><strong>Episodios:</strong> 8</p>
+            <p><i class="fas fa-signal icono"></i><strong>Estado:</strong> Finalizada</p>
+            <p><i class="fas fa-info-circle icono"></i><strong>Sinopsis:</strong> La historia es una comedia romántica protagonizada por el universitario Kazushi Sudo y sus amigas de la infancia, las hermanas Shirakawa. Todo da comienzo cuando, por motivos de la vida, los tres acaban tomando un baño juntos.</p>
+            <div class="video-buttons">
+                <span class="button" onclick="openInnerModal('innerModalH#OT1')">TEMPORADA 1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TEMPORADA 1 -->
+
+<div id="innerModalH#OT1" class="inner-modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInnerModal('innerModalH#OT1')">×</span>
+        <div class="video-buttons">
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lL2g2dWczamJoODd1cQ==" class="button" target="_blank">Episodio 1</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lL2kybmJjN2s4emY4aQ==" class="button" target="_blank">Episodio 2</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lL2kwemg5eXVzeWNsbA==" class="button" target="_blank">Episodio 3</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lL3pnNXZndjcyMWgxeA==" class="button" target="_blank">Episodio 4</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lL2RmMThuNnN2YmZiYQ==" class="button" target="_blank">Episodio 5</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lL3RsemUxeTYzMXJoZw==" class="button" target="_blank">Episodio 6</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lLzMxeG5nYWpuOW8xZw==" class="button" target="_blank">Episodio 7</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lL3JnejV1YWNjbGpjNg==" class="button" target="_blank">Episodio 8</a>
+        </div>
+    </div>
+</div>
+
+<!-- HENTAI "EL SEÑOR LOBO QUIERE SER COMIDO" -->
+
+<div id="modalH3" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalH3')">×</span>
+        <img src="https://image.tmdb.org/t/p/original/uTNcC9ArHn05XBcqb6qFfMheK2E.jpg" alt="El señor lobo quiere ser comido">
+        <h3>EL SEÑOR LOBO QUIERE SER COMIDO</h3>
+        <div class="modal-info">
+            <p><i class="fas fa-calendar-alt icono"></i><strong>Año:</strong> 2020</p>
+            <p><i class="fas fa-film icono"></i><strong>Género:</strong> Animación</p>
+            <p><i class="fas fa-tv icono"></i><strong>Temporadas:</strong> 1</p>
+            <p><i class="fas fa-list icono"></i><strong>Episodios:</strong> 3</p>
+            <p><i class="fas fa-signal icono"></i><strong>Estado:</strong> Finalizada</p>
+            <p><i class="fas fa-info-circle icono"></i><strong>Sinopsis:</strong> Ookami, una guapa y solitaria chica, es atacada por el infame *Ladrón de Faldas*. En eso aparece Akazu, su profesor de Educación Física, quien, sin pensarlo dos veces, va a su rescate. Ookami, totalmente aterrorizada por lo que acaba de vivir, le pide a Akazu que la lleve a su casa. Sin embargo, al llegar allá, Akazu descubrirá que su enigmática estudiante tenía algo más en mente.</p>
+            <div class="video-buttons">
+                <span class="button" onclick="openInnerModal('innerModalH#ESLQSCT1')">TEMPORADA 1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TEMPORADA 1 -->
+
+<div id="innerModalH#ESLQSCT1" class="inner-modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInnerModal('innerModalH#ESLQSCT1')">×</span>
+        <div class="video-buttons">
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lL28zenBydGZnenN5OQ==" class="button" target="_blank">Episodio 1</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lL3VyeXdyOG14ZmhwZg==" class="button" target="_blank">Episodio 2</a>
+<a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9obHN3aXNoLmNvbS9lLzlrbWQxZm9zYjg0eQ==" class="button" target="_blank">Episodio 3</a>
+        </div>
+    </div>
+</div>
+
+<!-- HENTAI "MI GRAN JEFE" -->
+
+<!-- MODAL -->
+
+<div id="modalH4" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalH4')">×</span>
+        <img src="https://image.tmdb.org/t/p/original/nYCjcpf2w5F652AEvYBDSo1KoDB.jpg" alt="Mi Gran Jefe">
+        <h3>MI GRAN JEFE</h3>
+        <div class="modal-info">
+            <p><i class="fas fa-calendar-alt icono"></i><strong>Año:</strong> 2019</p>
+            <p><i class="fas fa-film icono"></i><strong>Género:</strong> Animación</p>
+            <p><i class="fas fa-tv icono"></i><strong>Temporadas:</strong> 1</p>
+            <p><i class="fas fa-list icono"></i><strong>Episodios:</strong> 8</p>
+            <p><i class="fas fa-signal icono"></i><strong>Estado:</strong> Finalizada</p>
+            <p><i class="fas fa-info-circle icono"></i><strong>Sinopsis:</strong> Saki Watase trabaja en una compañía productora de condones cuando un día recibe un embarque de condones tamaño Extra Grande (EG) para probar. Al no tener novio, no tiene experiencia en el tema, pero en ese momento la ayuda de su superior Keisuke Sudo, que casualmente tiene esa talla, aparece. Entre ambos surgirá algo más que compañerismo laboral.</p>
+            <div class="video-buttons">
+                <span class="button" onclick="openInnerModal('innerModalH#MGFT1')">TEMPORADA 1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TEMPORADA 1 -->
+
+<div id="innerModalH#MGFT1" class="inner-modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInnerModal('innerModalH#MGFT1')">×</span>
+        <div class="video-buttons">
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS81czJ1bndzempodng=" class="button" target="_blank">Episodio 1</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS8yZHdmdWtxM3E1eHk=" class="button" target="_blank">Episodio 2</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9uYnZienFzOWd2dm0=" class="button" target="_blank">Episodio 3</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9mcGowcjRlcHhiOHI=" class="button" target="_blank">Episodio 4</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9veXQzcnk0eWxwZms=" class="button" target="_blank">Episodio 5</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9iNWd1N3oxbzI0YmI=" class="button" target="_blank">Episodio 6</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9zOHh0amthZDdnd3g=" class="button" target="_blank">Episodio 7</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9pZ3RuM3VnanQzcGc=" class="button" target="_blank">Episodio 8</a>
+        </div>
+    </div>
+</div>
+
+<!-- HENTAI "LOS ADULTOS NO SABEN AMAR" -->
+
+<!-- MODAL -->
+
+<div id="modalH5" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalH5')">×</span>
+        <img src="https://image.tmdb.org/t/p/original/2AigEr60a7I6GMNBt434f9Hzg4U.jpg" alt="Los adultos no saben amar">
+        <h3>LOS ADULTOS NO SABEN AMAR</h3>
+        <div class="modal-info">
+            <p><i class="fas fa-calendar-alt icono"></i><strong>Año:</strong> 2020</p>
+            <p><i class="fas fa-film icono"></i><strong>Género:</strong> Animación, Comedia</p>
+            <p><i class="fas fa-tv icono"></i><strong>Temporadas:</strong> 1</p>
+            <p><i class="fas fa-list icono"></i><strong>Episodios:</strong> 8</p>
+            <p><i class="fas fa-signal icono"></i><strong>Estado:</strong> Finalizada</p>
+            <p><i class="fas fa-info-circle icono"></i><strong>Sinopsis:</strong> La comedia romántica gira en torno a dos personas, ambas de unos 30 años. Mio Sudō, una oficinista que no ha tenido novio en cinco años y ha olvidado lo que es estar enamorada. Shuji Majima es un consultor de seguros que no ha tenido novia en siete años. Mio conoce a Shuji en una fiesta de parejas, pero lo encuentra repugnante cuando le dice: “No me gustan las mujeres”. Sin embargo, un comentario provocador de Mio lleva las cosas en una dirección inesperada.</p>
+            <div class="video-buttons">
+                <span class="button" onclick="openInnerModal('innerModalH#LANSAT1')">TEMPORADA 1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TEMPORADA 1 -->
+
+<div id="innerModalH#LANSAT1" class="inner-modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInnerModal('innerModalH#LANSAT1')">×</span>
+        <div class="video-buttons">
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9lazFiMTdpaWZhejM=" class="button" target="_blank">Episodio 1</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9ybjd0cDZxNGVhd2w=" class="button" target="_blank">Episodio 2</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9kOTk5MmppZWN3ZWg=" class="button" target="_blank">Episodio 3</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9qNmU3OWk3eW5wbjc=" class="button" target="_blank">Episodio 4</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9uOWlsYWswNGVxcG0=" class="button" target="_blank">Episodio 5</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS82enkwbmk0aDZqbXc=" class="button" target="_blank">Episodio 6</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS82a2k3NDZ0dWsyemI=" class="button" target="_blank">Episodio 7</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9tbnowbGJhcWZvanU=" class="button" target="_blank">Episodio 8</a>
+        </div>
+    </div>
+</div>
+
+<!-- HENTAI "MI PROMETIDO ES UN ESTUDIANTE" -->
+
+<!-- MODAL -->
+<div id="modalH6" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalH6')">×</span>
+        <img src="https://image.tmdb.org/t/p/original/my7A6AGwBvJhtzPrHjLW1ykVbNG.jpg" alt="Mi prometido es un estudiante">
+        <h3>MI PROMETIDO ES UN ESTUDIANTE</h3>
+        <div class="modal-info">
+            <p><i class="fas fa-calendar-alt icono"></i><strong>Año:</strong> 2017</p>
+            <p><i class="fas fa-film icono"></i><strong>Género:</strong> Animación, Drama</p>
+            <p><i class="fas fa-tv icono"></i><strong>Temporadas:</strong> 1</p>
+            <p><i class="fas fa-list icono"></i><strong>Episodios:</strong> 12</p>
+            <p><i class="fas fa-signal icono"></i><strong>Estado:</strong> Finalizada</p>
+            <p><i class="fas fa-info-circle icono"></i><strong>Sinopsis:</strong> Esta historia de amor con diferencia de edad está centrada en un estudiante problemático llamado Shuji Kuga y Nana Saikawa, una profesora que ha tardado en madurar.</p>
+            <div class="video-buttons">
+                <span class="button" onclick="openInnerModal('innerModalH#MPEUET1')">TEMPORADA 1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TEMPORADA 1 -->
+
+<div id="innerModalH#MPEUET1" class="inner-modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInnerModal('innerModalH#MPEUET1')">×</span>
+        <div class="video-buttons">
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9jd3M4YXhoM2Nmdjk=" class="button" target="_blank">Episodio 1</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS8yemExMDU1eXd4OWM=" class="button" target="_blank">Episodio 2</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS94emkzbGhueHpscWI=" class="button" target="_blank">Episodio 3</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9zYWkzMHF6ZWdsank=" class="button" target="_blank">Episodio 4</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9lNjBnbmRwbnJyaW4=" class="button" target="_blank">Episodio 5</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9ld3liemN3ZzRmdmQ=" class="button" target="_blank">Episodio 6</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9sMnBiZnVtdXdlamM=" class="button" target="_blank">Episodio 7</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS84YXBvNDU3cmNvN2g=" class="button" target="_blank">Episodio 8</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9qOXptOHkwM203NmM=" class="button" target="_blank">Episodio 9</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS91YnN3Y3BxbjV2Nzc=" class="button" target="_blank">Episodio 10</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9qamdjcTVzeWlhY2I=" class="button" target="_blank">Episodio 11</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS91MXlrY2hoeWZqcHk=" class="button" target="_blank">Episodio 12</a>
+        </div>
+    </div>
+</div>
+
+<!-- HENTAI "DEDOS TRAVIESOS" -->
+
+<!-- MODAL -->
+
+<div id="modalH7" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalH7')">×</span>
+        <img src="https://image.tmdb.org/t/p/original/5RoaXWgM7Zck23wIzcdL0MbArqb.jpg" alt="Dedos traviesos">
+        <h3>DEDOS TRAVIESOS</h3>
+        <div class="modal-info">
+            <p><i class="fas fa-calendar-alt icono"></i><strong>Año:</strong> 2020</p>
+            <p><i class="fas fa-film icono"></i><strong>Género:</strong> Animación, Soap</p>
+            <p><i class="fas fa-tv icono"></i><strong>Temporadas:</strong> 1</p>
+            <p><i class="fas fa-list icono"></i><strong>Episodios:</strong> 8</p>
+            <p><i class="fas fa-signal icono"></i><strong>Estado:</strong> Finalizada</p>
+            <p><i class="fas fa-info-circle icono"></i><strong>Sinopsis:</strong> Una historia de pasión que se desarrolla en un salón de belleza, donde un estilista profesional y una aprendiz descubren sentimientos inesperados entre cortes de cabello y momentos íntimos.</p>
+            <div class="video-buttons">
+                <span class="button" onclick="openInnerModal('innerModalH#DTT1')">TEMPORADA 1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TEMPORADA 1 -->
+
+<div id="innerModalH#DTT1" class="inner-modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInnerModal('innerModalH#DTT1')">×</span>
+        <div class="video-buttons">
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS96OTlrcjk0NXQ5M2o=" class="button" target="_blank">Episodio 1</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS8yMnpkeWVlcmUwYXA=" class="button" target="_blank">Episodio 2</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9sOGgyOGt1cWJrank=" class="button" target="_blank">Episodio 3</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS84Y3dva3RlOWltZmQ=" class="button" target="_blank">Episodio 4</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9hb3J1ZzYwcTY1NXY=" class="button" target="_blank">Episodio 5</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9tNzY1bHYxemZmbjE=" class="button" target="_blank">Episodio 6</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9kb21vaGkzenJrMjE=" class="button" target="_blank">Episodio 7</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9zd2lzaHNydi5jb20vZS9lcXVmYmkyNmhmZmw=" class="button" target="_blank">Episodio 8</a>
+        </div>
+    </div>
+</div>
+
+<!-- HENTAI "MODAETE YO, ADAM-KUN" -->
+
+<!-- MODAL -->
+
+<div id="modalH8" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalH8')">×</span>
+        <img src="https://image.tmdb.org/t/p/original/bs70WStsspaiclienWGeMBUDotQ.jpg" alt="Modaete Y, Adam-kun">
+        <h3>MODAETE YO, ADAM-KUN</h3>
+        <div class="modal-info">
+            <p><i class="fas fa-calendar-alt icono"></i><strong>Año:</strong> 2024</p>
+            <p><i class="fas fa-film icono"></i><strong>Género:</strong> Animación</p>
+            <p><i class="fas fa-tv icono"></i><strong>Temporadas:</strong> 1</p>
+            <p><i class="fas fa-list icono"></i><strong>Episodios:</strong> 5</p>
+            <p><i class="fas fa-signal icono"></i><strong>Estado:</strong> En Emisión</p>
+            <p><i class="fas fa-info-circle icono"></i><strong>Sinopsis:</strong> Esta historia de “harem x ciencia ficción en un futuro cercano” se sitúa en un mundo que sufre una pandemia que ha provocado que los hombres de todo el mundo padezcan disfunción eréctil. La historia se centra en Kazuki, un chico de instituto que es uno de los pocos que aún puede ponerse duro. Es arengado por su amable senpai, su cachondo profesora, una atractiva chica que es el “príncipe” de la escuela y la heredera de un enorme conglomerado.</p>
+            <div class="video-buttons">
+                <span class="button" onclick="openInnerModal('innerModalH#MYAKT1')">TEMPORADA 1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TEMPORADA 1 -->
+<div id="innerModalH#MYAKT1" class="inner-modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInnerModal('innerModalH#MYAKT1')">×</span>
+        <div class="video-buttons">
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9pcGxheWVyaGxzLmNvbS9lL3E4ZjVnbG12MG9kdA==" class="button" target="_blank">Episodio 1</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9pcGxheWVyaGxzLmNvbS9lL2E3cTdoaG1ydDV3eg==" class="button" target="_blank">Episodio 2</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9pcGxheWVyaGxzLmNvbS9lL2s4OXRrMm1tendwNA==" class="button" target="_blank">Episodio 3</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9pcGxheWVyaGxzLmNvbS9lLzB5eHJnbDFjdXY2aQ==" class="button" target="_blank">Episodio 4</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9pcGxheWVyaGxzLmNvbS9lL3dvMjJsaXV0ZzJ3cQ==" class="button" target="_blank">Episodio 5</a>
+        </div>
+    </div>
+</div>
+
+<!-- HENTAI "JIMIHEN!! JIMIKO WO KAE CHAU JUN ISEI KOUYUU" -->
+
+<!-- MODAL -->
+<div id="modalH9" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalH9')">×</span>
+        <img src="https://image.tmdb.org/t/p/original/to5FshluwPdO9d3Ucs7fagJL7OU.jpg" alt="JIMIHEN!! JIMIKO WO KAE CHAU JUN ISEI KOUYUU">
+        <h3>JIMIHEN!! JIMIKO WO KAE CHAU JUN ISEI KOUYUU</h3>
+        <div class="modal-info">
+            <p><i class="fas fa-calendar-alt icono"></i><strong>Año:</strong> 2021</p>
+            <p><i class="fas fa-film icono"></i><strong>Género:</strong> Animación, Comedia</p>
+            <p><i class="fas fa-tv icono"></i><strong>Temporadas:</strong> 1</p>
+            <p><i class="fas fa-list icono"></i><strong>Episodios:</strong> 8</p>
+            <p><i class="fas fa-signal icono"></i><strong>Estado:</strong> Finalizada</p>
+            <p><i class="fas fa-info-circle icono"></i><strong>Sinopsis:</strong> La historia sigue la relación entre dos compañeros de trabajo, la oficinista Rena Yukuhashi y el empresario Ryōhei Hachiya. Rena parece la mujer más sencilla de su empresa, pero se transforma en una belleza deslumbrante cuando se viste fuera de la oficina. Nerviosa al ver a Yukuhashi transformado, Ryōhei sin darse cuenta pronuncia lo que suena como una invitación a conocerse mejor, sin darse cuenta de que están parados frente a un hotel del amor.</p>
+            <div class="video-buttons">
+                <span class="button" onclick="openInnerModal('innerModalH#JJWKCJIKT1')">TEMPORADA 1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TEMPORADA 1 -->
+
+<div id="innerModalH#JJWKCJIKT1" class="inner-modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInnerModal('innerModalH#JJWKCJIKT1')">×</span>
+        <div class="video-buttons">
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9pcGxheWVyaGxzLmNvbS9lLzFjbWdteXdsb3E3NQ==" class="button" target="_blank">Episodio 1</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9pcGxheWVyaGxzLmNvbS9lL2NudGVxZDVzeHZwbg==" class="button" target="_blank">Episodio 2</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9pcGxheWVyaGxzLmNvbS9lLzYyank5OTJzcWh5MQ==" class="button" target="_blank">Episodio 3</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9pcGxheWVyaGxzLmNvbS9lLzNzbnVpang4NDUxag==" class="button" target="_blank">Episodio 4</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9pcGxheWVyaGxzLmNvbS9lL3lsYjRwNW51dGQ0OQ==" class="button" target="_blank">Episodio 5</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9pcGxheWVyaGxzLmNvbS9lLzVlZWdpYXNiYmRtcA==" class="button" target="_blank">Episodio 6</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9pcGxheWVyaGxzLmNvbS9lLzlkaWVrenQ4ZWE4dQ==" class="button" target="_blank">Episodio 7</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9pcGxheWVyaGxzLmNvbS9lL3pkb3lqbzZhM2RxOA==" class="button" target="_blank">Episodio 8</a>
+        </div>
+    </div>
+</div>
+
+<!-- HENTAI "KURO GYARU NI NATTA KARA SHINYUU TO YATTEE MITA" -->
+
+<!-- MODAL -->
+
+<div id="modalHentai10" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalHentai10')">×</span>
+        <img src="https://image.tmdb.org/t/p/original/vCXLdYORw5iPqpjcE71KAEoCwbO.jpg" alt="Kuro Gyaru ni Natta kara Shinyuu to Yattee Mita">
+        <h3>KURO GYARU NI NATTA KARA SHINYUU TO YATTEE MITA</h3>
+        <div class="modal-info">
+            <p><i class="fas fa-calendar-alt icono"></i><strong>Año:</strong> 2021</p>
+            <p><i class="fas fa-film icono"></i><strong>Género:</strong> Animación, Comedia</p>
+            <p><i class="fas fa-tv icono"></i><strong>Temporadas:</strong> 1</p>
+            <p><i class="fas fa-list icono"></i><strong>Episodios:</strong> 8</p>
+            <p><i class="fas fa-signal icono"></i><strong>Estado:</strong> Finalizada</p>
+            <p><i class="fas fa-info-circle icono"></i><strong>Sinopsis:</strong> Shion y Rui son el equipo de ensueño cuando se trata de ligar con mujeres. Esta noche iba a ser otra noche de ligar con chicas para Shion, pero terminó tomando una droga extraña. Cuando despertó… ¡¿se había convertido en una niña?! Rui vino a buscar a Shion, pero no lo reconoció y comenzó a coquetear con él.</p>
+            <div class="video-buttons">
+                <span class="button" onclick="openInnerModal('innerModalHentai#KGNKSTYMT1')">TEMPORADA 1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TEMPORADA 1 -->
+
+<div id="innerModalHentai#KGNKSTYMT1" class="inner-modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInnerModal('innerModalHentai#KGNKSTYMT1')">×</span>
+        <div class="video-buttons">
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL3lhcno2MmZlcXlqeQ==" class="button" target="_blank">Episodio 1</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL3RsdHExa2txOGs5cw==" class="button" target="_blank">Episodio 2</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL3J0ZjN1aG5pajh6dQ==" class="button" target="_blank">Episodio 3</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL2Z0MXZiOXp3YmFkbQ==" class="button" target="_blank">Episodio 4</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL2JvMGJwMGptMDlqdg==" class="button" target="_blank">Episodio 5</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL3h0bnpnYzN5NDVveA==" class="button" target="_blank">Episodio 6</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL3I2OXNtaWcybGo2MA==" class="button" target="_blank">Episodio 7</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL3B3cWZubzIzcW9pMA==" class="button" target="_blank">Episodio 8</a>
+        </div>
+    </div>
+</div>
+
+<!-- HENTAI "DEFINITIVAMENTE ¡NO ME GUSTA MI HERMANO PARA NADA!" -->
+
+<!-- MODAL -->
+
+<div id="modalNoMeGustaMiHermano" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalNoMeGustaMiHermano')">×</span>
+        <img src="https://image.tmdb.org/t/p/original/94NSjNHU9fOfoUXSYG2nzKafYww.jpg" alt="Definitivamente. ¡No me gusta mi hermano para nada!">
+        <h3>DEFINITIVAMENTE. ¡NO ME GUSTA MI HERMANO PARA NADA!</h3>
+        <div class="modal-info">
+            <p><i class="fas fa-calendar-alt icono"></i><strong>Año:</strong> 2011</p>
+            <p><i class="fas fa-film icono"></i><strong>Género:</strong> Comedia, Animación</p>
+            <p><i class="fas fa-list icono"></i><strong>Episodios:</strong> 12</p>
+            <p><i class="fas fa-signal icono"></i><strong>Estado:</strong> Finalizada</p>
+            <p><i class="fas fa-info-circle icono"></i><strong>Sinopsis:</strong> La historia gira en torno a Nao Takanashi ,una estudiante de secundaria que tiene un complejo de hermanos muy fuerte, tan fuerte que puede llegar a punto del incesto. Ella está deter minada a hacer que su hermano,Shuusuke Takanashi , un estudiante de instituto la vea como una mujer sea como sea. Ella incluso llega muy lejos metiendose a escondidas a la habitación de su hermano en búsqueda de revistas pornográficas o algo parecido, con tal de lograr su cometido y seducirlo.</p>
+            <div class="video-buttons">
+                <span class="button" onclick="openInnerModal('innerModalNoMeGustaMiHermano')">TEMPORADA 1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TEMPORADA 1 -->
+
+<div id="innerModalNoMeGustaMiHermano" class="inner-modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInnerModal('innerModalNoMeGustaMiHermano')">×</span>
+        <div class="video-buttons">
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lLzNkbXJwOWgweDI5dA==" class="button" target="_blank">Episodio 1</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lLzFwMjJ5YTZja3JsZg==" class="button" target="_blank">Episodio 2</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL2o2Y2UxaDRiaGlodw==" class="button" target="_blank">Episodio 3</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lLzl0cWZ3cmhkYzZwaQ==" class="button" target="_blank">Episodio 4</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL3Uybmk3cWNrdHN0YQ==" class="button" target="_blank">Episodio 5</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lLzhzdDBvbXY4bnZwbg==" class="button" target="_blank">Episodio 6</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL2F1ajQzN2JkeHN4dA==" class="button" target="_blank">Episodio 7</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL2t5d3NmcTNrcHZrag==" class="button" target="_blank">Episodio 8</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL2RqaXUxNTRpZHpjcw==" class="button" target="_blank">Episodio 9</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL2xnMzJhb3F1bXpocg==" class="button" target="_blank">Episodio 10</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lLzJjMTBiZmY3a21oOQ==" class="button" target="_blank">Episodio 11</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lLzJ3cGE1b3FtNTR4OQ==" class="button" target="_blank">Episodio 12</a>
+        </div>
+    </div>
+</div>
+
+<!-- HENTAI "UNA NOCHE ARDIENTE CON MI JEFE EN UN HOTEL DE CÁPSULA" -->
+
+<!-- MODAL -->
+
+<div id="modalUnaNocheArdiente" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalUnaNocheArdiente')">×</span>
+        <img src="https://image.tmdb.org/t/p/original/yOa9M7e3M9P2sJBQzemLvV7cwBS.jpg" alt="Una noche ardiente con mi jefe en un hotel de cápsula">
+        <h3>UNA NOCHE ARDIENTE CON MI JEFE EN UN HOTEL DE CÁPSULA</h3>
+        <div class="modal-info">
+            <p><i class="fas fa-calendar-alt icono"></i><strong>Año:</strong> 2018</p>
+            <p><i class="fas fa-film icono"></i><strong>Género:</strong> Animación</p>
+            <p><i class="fas fa-list icono"></i><strong>Episodios:</strong> 12</p>
+            <p><i class="fas fa-signal icono"></i><strong>Estado:</strong> Finalizada</p>
+            <p><i class="fas fa-info-circle icono"></i><strong>Sinopsis:</strong> El anime se centra en Minori, una empleada de oficina, y su jefe Hadano, quienes discuten constantemente entre sí. Una noche, después de una fiesta de bebidas de la empresa, Minori y Hadano están teniendo su discusión habitual, cuando Minori se da cuenta de que ha perdido el último tren. Deciden pasar la noche en un hotel cápsula cercano, pero un incidente los obliga a compartir la misma unidad.</p>
+            <div class="video-buttons">
+                <span class="button" onclick="openInnerModal('innerModalUnaNocheArdiente')">VER EPISODIOS</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TEMPORADA 1 -->
+
+<div id="innerModalUnaNocheArdiente" class="inner-modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInnerModal('innerModalUnaNocheArdiente')">×</span>
+        <div class="video-buttons">
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL2djdHViYTYwNHpoMg==" class="button" target="_blank">Episodio 1</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL2k2aHZmbmJpbGRlbA==" class="button" target="_blank">Episodio 2</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL2h5Yjd5MnZrcmMzdg==" class="button" target="_blank">Episodio 3</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL3JvMHFnaG9qN3lyZw==" class="button" target="_blank">Episodio 4</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL2FteHI1OWx2YXA3Nw==" class="button" target="_blank">Episodio 5</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL3ZkM2RndTZkZHRpYw==" class="button" target="_blank">Episodio 6</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lLzNjaGlhcWtxenB1eg==" class="button" target="_blank">Episodio 7</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL3ExaXgwcHF4Z252ZQ==" class="button" target="_blank">Episodio 8</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL2loYzNqcWV1bXczdg==" class="button" target="_blank">Episodio 9</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL3pldWUwZmlmcWdxMQ==" class="button" target="_blank">Episodio 10</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lL3Y1Y3RwcnRiajF0eQ==" class="button" target="_blank">Episodio 11</a>
+            <a href="https://vpn-movie-ofc.blogspot.com/2024/05/embed_27.html?r=aHR0cHM6Ly9naGJyaXNrLmNvbS9lLzEwaGg5OWQ4OGxyOQ==" class="button" target="_blank">Episodio 12</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+(function() {
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+
+    function openInnerModal(innerModalId) {
+        document.getElementById(innerModalId).style.display = "block";
+    }
+
+    function closeInnerModal(innerModalId) {
+        document.getElementById(innerModalId).style.display = "none";
+    }
+
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+    window.openInnerModal = openInnerModal;
+    window.closeInnerModal = closeInnerModal;
+})();
+</script>
+
+</body>
+</html>
